@@ -1,17 +1,56 @@
 <!doctype html>
-<html lang="en">
+<html lang="da">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pizza Clicker</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
+    <link rel="icon" type="icon" href="images/icon1.png" />
+    <script src="script.js" defer></script>
   </head>
   <body>
     <header>
       <h1>Pizza Clicker!</h1>
-      <p>Welcome to Pizza Clicker</p>
     </header>
-    <main></main>
+    <main>
+      <!--left-side-pizza-->
+      <section class="left-side">
+        <p>Dollars: <span id="dollarCount">0</span>$</p>
+        <button class="pizza">
+          <img src="images/01_dej.png" />
+        </button>
+      </section>
+
+      <!--right-side-bar-->
+      <section>
+        <ul>
+          <li>
+            <button id="tomatSauce">Tomat Sauce</button>:
+            <span id="tomatSauceAmount">0</span>
+          </li>
+          <li>
+            <button id="ost">Ost</button>:
+            <span id="ostAmount">0</span>
+          </li>
+          <li>
+            <button id="pølser">Pølser</button>:
+            <span id="pølserAmount">0</span>
+          </li>
+          <li>
+            <button id="bacon">Bacon</button>:
+            <span id="baconAmount">0</span>
+          </li>
+          <li>
+            <button id="kebab">Kebab</button>:
+            <span id="kebabAmount">0</span>
+          </li>
+          <li>
+            <button id="trøffel">Trøffel</button>:
+            <span id="trøffelAmount">0</span>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer></footer>
   </body>
 </html>

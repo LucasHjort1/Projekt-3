@@ -1,6 +1,5 @@
 :root {
-  --background-color: #3498db50;
-  --primary-color: #2ecc71;
+  --primary-color: #31a260;
   --text-color: #333;
   --font-family: "Arial", sans-serif;
 }
@@ -10,11 +9,54 @@ body {
   box-sizing: border-box;
   font-family: var(--font-family);
   color: var(--text-color);
-  background-color: var(--background-color);
+  background-image: url(https://cdn.discordapp.com/attachments/1564973002133864620/1569360128598220853/Hyggeligt_italiensk_pizzakkken.png?ex=6af32c03&is=6af1da83&hm=b4e9e727b98e7f5183c9d62c90f65987ef0d69bdf11f8ec70f104316800320b0);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
 }
 header {
   justify-items: center;
 }
-main{
-    display: flex;
+main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.left-side {
+  grid-column: 1;
+}
+
+.right-side {
+  grid-column: 2;
+}
+
+.pizza {
+  max-width: 500px;
+  max-height: 500px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.pizza img {
+  border-radius: 50%;
+  display: block;
+  max-width: 100%;
+}
+
+header {
+  font-size: 1.5rem;
+  background-color: var(--primary-color);
+  max-width: fit-content;
+  justify-self: center;
+  padding-inline: 20px;
+  border-radius: 30px;
+  border: 2px solid var(--text-color);
+  box-shadow: 4px 4px var(--text-color);
+  margin: 8px;
+}
+header h1 {
+  margin: 0;
+  padding: 5px;
 }
