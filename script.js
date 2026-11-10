@@ -6,6 +6,19 @@ let bacon = 0;
 let kebab = 0;
 let trøffel = 0;
 
+const upgrades = [
+  {
+    name: "Pizza sauce",
+    amount: 0,
+    cost: 10,
+  },
+  {
+    name: "Cheese",
+    amount: 0,
+    cost: 100,
+  },
+];
+
 const upgradeAmount = [pizzaSauce, ost, pølser, bacon, kebab, trøffel];
 
 let pizzaSauceCost = 10;
@@ -30,7 +43,9 @@ pizza.addEventListener("click", addPoint);
 // Event listener for upgrades
 const tomatSauceAmount = document.querySelector("#tomatSauceAmount");
 const tomatSauceUpgrade = document.querySelector("#tomatSauce");
-tomatSauceUpgrade.addEventListener("click", buyUpgrade(1));
+tomatSauceUpgrade.addEventListener("click", () => {
+  buyUpgrade(0);
+});
 
 const ostAmount = document.querySelector("#ostAmount");
 const ostUpgrade = document.querySelector("#ost");
@@ -63,18 +78,18 @@ trøffelUpgrade.addEventListener("click", () => {
 });
 
 function buyUpgrade(int) {
-  if (dollars > upgradeCost[int]) {
-    upgradeAmount[int]++;
+  if (dollars > upgrades[int].cost) {
+    upgrades[int].amount++;
     console.log(upgradeAmount[int]);
-    dollars -= upgradeCost[int];
+    dollars -= upgrades[int].cost;
     updateUpgrades();
   } else {
-    //alert("You don't have enough money to buy this upgrade!");
+    alert("You don't have enough money to buy this upgrade!");
   }
 }
 
 function updateUpgrades() {
-  tomatSauceAmount.textContent = pizzaSauce;
+  tomatSauceAmount.textContent = upgrades[0].amount;
   ostAmount.textContent = ost;
   pølserAmount.textContent = pølser;
   baconAmount.textContent = bacon;
