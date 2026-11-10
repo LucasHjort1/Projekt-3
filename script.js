@@ -1,10 +1,5 @@
 let dollars = 0;
-let pizzaSauce = 0;
-let ost = 0;
-let pølser = 0;
-let bacon = 0;
-let kebab = 0;
-let trøffel = 0;
+let clicks = 1;
 
 const upgrades = [
   {
@@ -58,42 +53,41 @@ tomatSauceUpgrade.addEventListener("click", () => {
 const ostAmount = document.querySelector("#ostAmount");
 const ostUpgrade = document.querySelector("#ost");
 ostUpgrade.addEventListener("click", () => {
-  ost++;
+  buyUpgrade(1);
 });
 
 const pølserAmount = document.querySelector("#pølserAmount");
 const pølserUpgrade = document.querySelector("#pølser");
 pølserUpgrade.addEventListener("click", () => {
-  pølser++;
+  buyUpgrade(2);
 });
 
 const baconAmount = document.querySelector("#baconAmount");
 const baconUpgrade = document.querySelector("#bacon");
 baconUpgrade.addEventListener("click", () => {
-  bacon++;
+  buyUpgrade(3);
 });
 
 const kebabAmount = document.querySelector("#kebabAmount");
 const kebabUpgrade = document.querySelector("#kebab");
 kebabUpgrade.addEventListener("click", () => {
-  kebab++;
+  buyUpgrade(4);
 });
 
 const trøffelAmount = document.querySelector("#trøffelAmount");
 const trøffelUpgrade = document.querySelector("#trøffel");
 trøffelUpgrade.addEventListener("click", () => {
-  trøffel++;
+  buyUpgrade(5);
 });
 
 function buyUpgrade(int) {
   if (dollars >= upgrades[int].cost) {
     upgrades[int].amount++;
-    upgrades[int].cost = Math.ceil(upgrades[int].cost * 1.05);
-
-    console.log(upgrades[int].cost);
+    clicks = clicks + upgrades[int].clicks;
     dollars -= upgrades[int].cost;
+    upgrades[int].cost = Math.ceil(upgrades[int].cost * 1.05);
     updateUpgrades();
-    updateDollar();
+    updateStats();
   } else {
     alert("You don't have enough money to buy this upgrade!");
   }
@@ -101,20 +95,22 @@ function buyUpgrade(int) {
 
 function updateUpgrades() {
   tomatSauceAmount.textContent = upgrades[0].amount;
-  ostAmount.textContent = ost;
-  pølserAmount.textContent = pølser;
-  baconAmount.textContent = bacon;
-  kebabAmount.textContent = kebab;
-  trøffelAmount.textContent = trøffel;
+  ostAmount.textContent = upgrades[1].amount;
+  pølserAmount.textContent = upgrades[2].amount;
+  baconAmount.textContent = upgrades[3].amount;
+  kebabAmount.textContent = upgrades[4].amount;
+  trøffelAmount.textContent = upgrades[5].amount;
 }
 
 const dollarCount = document.querySelector("#dollarCount");
+const clickCount = document.querySelector("#clickCount");
 
 function addPoint() {
-  dollars++;
-  updateDollar();
+  dollars += clicks;
+  updateStats();
 }
 
-function updateDollar() {
+function updateStats() {
   dollarCount.textContent = dollars;
+  clickCount.textContent = clicks;
 }
