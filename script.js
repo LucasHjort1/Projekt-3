@@ -11,30 +11,38 @@ const upgrades = [
     name: "Pizza sauce",
     amount: 0,
     cost: 10,
+    clicks: 1,
   },
   {
-    name: "Cheese",
+    name: "Ost",
     amount: 0,
     cost: 100,
+    clicks: 5,
   },
-];
-
-const upgradeAmount = [pizzaSauce, ost, pølser, bacon, kebab, trøffel];
-
-let pizzaSauceCost = 10;
-let ostCost = 100;
-let pølserCost = 500;
-let baconCost = 1000;
-let kebabCost = 2500;
-let trøffelCost = 5000;
-
-const upgradeCost = [
-  pizzaSauceCost,
-  ostCost,
-  pølserCost,
-  baconCost,
-  kebabCost,
-  trøffelCost,
+  {
+    name: "Pølser",
+    amount: 0,
+    cost: 500,
+    clicks: 10,
+  },
+  {
+    name: "Bacon",
+    amount: 0,
+    cost: 1000,
+    clicks: 20,
+  },
+  {
+    name: "Kebab",
+    amount: 0,
+    cost: 2500,
+    clicks: 25,
+  },
+  {
+    name: "Trøffel",
+    amount: 0,
+    cost: 5000,
+    clicks: 50,
+  },
 ];
 
 const pizza = document.querySelector(".pizza img");
@@ -78,11 +86,14 @@ trøffelUpgrade.addEventListener("click", () => {
 });
 
 function buyUpgrade(int) {
-  if (dollars > upgrades[int].cost) {
+  if (dollars >= upgrades[int].cost) {
     upgrades[int].amount++;
-    console.log(upgradeAmount[int]);
+    upgrades[int].cost = Math.ceil(upgrades[int].cost * 1.05);
+
+    console.log(upgrades[int].cost);
     dollars -= upgrades[int].cost;
     updateUpgrades();
+    updateDollar();
   } else {
     alert("You don't have enough money to buy this upgrade!");
   }
