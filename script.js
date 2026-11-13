@@ -140,7 +140,6 @@ function buySpeedUpgrade(int) {
     updateUpgrades();
     updateStats();
     updateCPS();
-    clicksPerSecond();
   } else {
     alert("You don't have enough money to buy this upgrade!");
   }
@@ -170,6 +169,7 @@ function clicksPerSecond() {
   setInterval(() => {
     dollars += getDollarsPerSecond();
     updateStats();
+    updateCPS();
   }, 1000);
 }
 
@@ -184,9 +184,11 @@ function getDollarsPerSecond() {
 function updateStats() {
   dollarCount.textContent = dollars.toFixed(0);
   clickCount.textContent = clicks;
+  workSpeedAmount.textContent =
+    1 + upgrades[7].amount * upgrades[7].speed + "x";
 }
 function updateCPS() {
-  cpsCount.textContent = cps + clicks * 0.2;
+  cpsCount.textContent = getDollarsPerSecond().toFixed(1);
 }
 
 workSpeedAmount.textContent = 1 + upgrades[7].amount * upgrades[7].speed + "x";
