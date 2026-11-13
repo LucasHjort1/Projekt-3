@@ -1,5 +1,6 @@
 let dollars = 0;
 let clicks = 1;
+let cps = 0;
 
 const upgrades = [
   {
@@ -37,6 +38,18 @@ const upgrades = [
     amount: 0,
     cost: 5000,
     clicks: 50,
+  },
+  {
+    name: "Worker",
+    amount: 0,
+    cost: 1,
+    cps: 1,
+  },
+  {
+    name: "Workspeed",
+    amount: 0,
+    cost: 2,
+    cps: 0,
   },
 ];
 
@@ -80,6 +93,18 @@ trøffelUpgrade.addEventListener("click", () => {
   buyUpgrade(5);
 });
 
+const workerAmount = document.querySelector("#workerAmount");
+const workerUpgrade = document.querySelector("#worker");
+workerUpgrade.addEventListener("click", () => {
+  buyCPSUpgrade(6);
+});
+
+const workSpeedAmount = document.querySelector("#workSpeedAmount");
+const workSpeed = document.querySelector("#workSpeed");
+workSpeed.addEventListener("click", () => {
+  buyCPSUpgrade(7);
+});
+
 function buyUpgrade(int) {
   if (dollars >= upgrades[int].cost) {
     upgrades[int].amount++;
@@ -93,6 +118,20 @@ function buyUpgrade(int) {
   }
 }
 
+function buyCPSUpgrade(int) {
+  if (dollars >= upgrades[int].cost) {
+    upgrades[int].amount++;
+    dollars -= upgrades[int].cost;
+    upgrades[int].cost = Math.ceil(upgrades[int].cost * 2);
+    cps = upgrades[6].amount * Math.max(1, upgrades[7].amount);
+    updateUpgrades();
+    updateStats();
+    clicksPerSecond();
+  } else {
+    alert("You don't have enough money to buy this upgrade!");
+  }
+}
+
 function updateUpgrades() {
   tomatSauceAmount.textContent = upgrades[0].amount;
   ostAmount.textContent = upgrades[1].amount;
@@ -100,17 +139,28 @@ function updateUpgrades() {
   baconAmount.textContent = upgrades[3].amount;
   kebabAmount.textContent = upgrades[4].amount;
   trøffelAmount.textContent = upgrades[5].amount;
+  workerAmount.textContent = upgrades[6].amount;
+  workSpeedAmount.textContent = upgrades[7].amount;
 }
 
 const dollarCount = document.querySelector("#dollarCount");
 const clickCount = document.querySelector("#clickCount");
+const cpsCount = document.querySelector("#cpsCount");
 
 function addPoint() {
   dollars += clicks;
   updateStats();
 }
 
+function clicksPerSecond() {
+  setInterval(() => {
+    dollars += cps;
+    updateStats();
+  }, 1000);
+}
+
 function updateStats() {
   dollarCount.textContent = dollars;
   clickCount.textContent = clicks;
+  cpsCount.textContent = cps;
 }
