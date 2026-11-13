@@ -9,7 +9,7 @@ body {
   box-sizing: border-box;
   font-family: var(--font-family);
   color: var(--text-color);
-  background-image: url(https://cdn.discordapp.com/attachments/1564973002133864620/1569360128598220853/Hyggeligt_italiensk_pizzakkken.png?ex=6af32c03&is=6af1da83&hm=b4e9e727b98e7f5183c9d62c90f65987ef0d69bdf11f8ec70f104316800320b0);
+  background-image: url(images/Hyggeligt_italiensk_pizzakkken.png);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;

@@ -42,14 +42,14 @@ const upgrades = [
   {
     name: "Worker",
     amount: 0,
-    cost: 1,
+    cost: 50000,
     cps: 1,
   },
   {
     name: "Workspeed",
     amount: 0,
-    cost: 2,
-    cps: 0,
+    cost: 25000,
+    speed: 0.5,
   },
 ];
 
@@ -123,9 +123,12 @@ function buyCPSUpgrade(int) {
     upgrades[int].amount++;
     dollars -= upgrades[int].cost;
     upgrades[int].cost = Math.ceil(upgrades[int].cost * 2);
-    cps = upgrades[6].amount * Math.max(1, upgrades[7].amount);
+    cps =
+      upgrades[6].amount *
+      (1 + upgrades[7].amount * upgrades[7].speed).toFixed(2);
     updateUpgrades();
     updateStats();
+    updateCPS();
     clicksPerSecond();
   } else {
     alert("You don't have enough money to buy this upgrade!");
@@ -141,6 +144,8 @@ function updateUpgrades() {
   trøffelAmount.textContent = upgrades[5].amount;
   workerAmount.textContent = upgrades[6].amount;
   workSpeedAmount.textContent = upgrades[7].amount;
+  workSpeedAmount.textContent =
+    1 + upgrades[7].amount * upgrades[7].speed + "x";
 }
 
 const dollarCount = document.querySelector("#dollarCount");
@@ -154,13 +159,18 @@ function addPoint() {
 
 function clicksPerSecond() {
   setInterval(() => {
-    dollars += cps;
+    dollars += cps + clicks * 0.2;
     updateStats();
+    updateCPS();
   }, 1000);
 }
 
 function updateStats() {
-  dollarCount.textContent = dollars;
+  dollarCount.textContent = dollars.toFixed(0);
   clickCount.textContent = clicks;
-  cpsCount.textContent = cps;
 }
+function updateCPS() {
+  cpsCount.textContent = cps + clicks * 0.2;
+}
+
+workSpeedAmount.textContent = 1 + upgrades[7].amount * upgrades[7].speed + "x";
