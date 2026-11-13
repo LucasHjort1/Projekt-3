@@ -122,9 +122,9 @@ function buyCPSUpgrade(int) {
   if (dollars >= upgrades[int].cost) {
     upgrades[int].amount++;
     dollars -= upgrades[int].cost;
-    upgrades[int].cost = Math.ceil(upgrades[int].cost * 2);
+    upgrades[int].cost = Math.ceil(upgrades[int].cost * 1.5);
     cps =
-      upgrades[6].amount *
+      (upgrades[6].amount + clicks) *
       (1 + upgrades[7].amount * upgrades[7].speed).toFixed(2);
     updateUpgrades();
     updateStats();
