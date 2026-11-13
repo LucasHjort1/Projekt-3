@@ -182,13 +182,18 @@ function getDollarsPerSecond() {
 }
 
 function updateStats() {
-  dollarCount.textContent = dollars.toFixed(0);
+  dollarCount.textContent = dollars.toLocaleString("en-US", {
+    maximumFractionDigits: 0,
+  });
   clickCount.textContent = clicks;
   workSpeedAmount.textContent =
     1 + upgrades[7].amount * upgrades[7].speed + "x";
 }
+
 function updateCPS() {
-  cpsCount.textContent = getDollarsPerSecond().toFixed(1);
+  cpsCount.textContent = getDollarsPerSecond().toLocaleString("en-US", {
+    maximumFractionDigits: 1,
+  });
 }
 
 workSpeedAmount.textContent = 1 + upgrades[7].amount * upgrades[7].speed + "x";
