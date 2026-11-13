@@ -18,37 +18,37 @@ const upgrades = [
   {
     name: "Pølser",
     amount: 0,
-    cost: 500,
+    cost: 1000,
     clicks: 10,
   },
   {
     name: "Bacon",
     amount: 0,
-    cost: 1000,
-    clicks: 20,
-  },
-  {
-    name: "Kebab",
-    amount: 0,
     cost: 2500,
     clicks: 25,
   },
   {
-    name: "Trøffel",
+    name: "Kebab",
     amount: 0,
     cost: 5000,
     clicks: 50,
   },
   {
+    name: "Trøffel",
+    amount: 0,
+    cost: 10000,
+    clicks: 100,
+  },
+  {
     name: "Worker",
     amount: 0,
-    cost: 50000,
+    cost: 5000,
     cps: 1,
   },
   {
     name: "Workspeed",
     amount: 0,
-    cost: 25000,
+    cost: 2500,
     speed: 0.5,
   },
 ];
@@ -102,7 +102,7 @@ workerUpgrade.addEventListener("click", () => {
 const workSpeedAmount = document.querySelector("#workSpeedAmount");
 const workSpeed = document.querySelector("#workSpeed");
 workSpeed.addEventListener("click", () => {
-  buyCPSUpgrade(7);
+  buySpeedUpgrade(7);
 });
 
 function buyUpgrade(int) {
@@ -113,6 +113,7 @@ function buyUpgrade(int) {
     upgrades[int].cost = Math.ceil(upgrades[int].cost * 1.05);
     updateUpgrades();
     updateStats();
+    updateCPS();
   } else {
     alert("You don't have enough money to buy this upgrade!");
   }
@@ -123,13 +124,22 @@ function buyCPSUpgrade(int) {
     upgrades[int].amount++;
     dollars -= upgrades[int].cost;
     upgrades[int].cost = Math.ceil(upgrades[int].cost * 1.5);
-    cps =
-      (upgrades[6].amount + clicks) *
-      (1 + upgrades[7].amount * upgrades[7].speed).toFixed(2);
     updateUpgrades();
     updateStats();
     updateCPS();
-    clicksPerSecond();
+  } else {
+    alert("You don't have enough money to buy this upgrade!");
+  }
+}
+
+function buySpeedUpgrade(int) {
+  if (dollars >= upgrades[int].cost) {
+    upgrades[int].amount++;
+    dollars -= upgrades[int].cost;
+    upgrades[int].cost = Math.ceil(upgrades[int].cost * 1.5);
+    updateUpgrades();
+    updateStats();
+    updateCPS();
   } else {
     alert("You don't have enough money to buy this upgrade!");
   }
@@ -144,8 +154,6 @@ function updateUpgrades() {
   trøffelAmount.textContent = upgrades[5].amount;
   workerAmount.textContent = upgrades[6].amount;
   workSpeedAmount.textContent = upgrades[7].amount;
-  workSpeedAmount.textContent =
-    1 + upgrades[7].amount * upgrades[7].speed + "x";
 }
 
 const dollarCount = document.querySelector("#dollarCount");
@@ -159,18 +167,30 @@ function addPoint() {
 
 function clicksPerSecond() {
   setInterval(() => {
-    dollars += cps + clicks * 0.2;
+    dollars += getDollarsPerSecond();
     updateStats();
     updateCPS();
   }, 1000);
 }
 
+function getSpeedMultiplier() {
+  return 1 + upgrades[7].amount * upgrades[7].speed;
+}
+
+function getDollarsPerSecond() {
+  return upgrades[6].amount * upgrades[6].cps * getSpeedMultiplier() * clicks;
+}
+
 function updateStats() {
   dollarCount.textContent = dollars.toFixed(0);
   clickCount.textContent = clicks;
+  workSpeedAmount.textContent =
+    1 + upgrades[7].amount * upgrades[7].speed + "x";
 }
 function updateCPS() {
-  cpsCount.textContent = cps + clicks * 0.2;
+  cpsCount.textContent = getDollarsPerSecond().toFixed(1);
 }
 
 workSpeedAmount.textContent = 1 + upgrades[7].amount * upgrades[7].speed + "x";
+
+clicksPerSecond();
