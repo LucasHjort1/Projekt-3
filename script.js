@@ -111,6 +111,7 @@ function buyUpgrade(int) {
     clicks = clicks + upgrades[int].clicks;
     dollars -= upgrades[int].cost;
     upgrades[int].cost = Math.ceil(upgrades[int].cost * 1.05);
+    addImage(int);
     updateUpgrades();
     updateStats();
     updateCPS();
@@ -199,3 +200,23 @@ function updateCPS() {
 workSpeedAmount.textContent = 1 + upgrades[7].amount * upgrades[7].speed + "x";
 
 clicksPerSecond();
+
+function addImage(int) {
+  const pizzaButton = document.querySelector(".pizza");
+  const img = document.createElement("img");
+  img.style.maxWidth = "500px";
+  img.style.maxHeight = "500px";
+
+  switch (int) {
+    case 0:
+      img.src = "images/02_tomatsovs.png";
+      img.alt = "tomatSauce";
+      break;
+    case 1:
+      img.src = "images/+02_tomatsovs.png";
+      img.alt = "tomatSauce";
+      break;
+  }
+
+  pizzaButton.appendChild(img);
+}

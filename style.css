@@ -30,6 +30,8 @@ main {
 }
 
 .pizza {
+  width: 500px;
+  height: 500px;
   max-width: 500px;
   max-height: 500px;
   padding: 0;
@@ -37,12 +39,25 @@ main {
   background: none;
   cursor: pointer;
   border-radius: 50%;
-  margin-top: 75px;
+  position: relative;
+  display: inline-block;
 }
 .pizza img {
   border-radius: 50%;
   display: block;
+  max-height: 500px;
   max-width: 100%;
+  object-fit: contain;
+}
+
+.pizza img:not(:first-child) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  /*GUTTER DENNE TING OVER GØR AT ALLE BILLDER DER IKKE ER
+  DEN FØRSTE, SKAL IGNORERE ALLE MUSSEKLIK EVENT, FOR ELLERS KLIKKER
+  MAN IKKE PÅ PIZZA OG SÅ NO MONEY!!!*/
 }
 
 .left-side h1 {
