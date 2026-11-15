@@ -105,6 +105,25 @@ workSpeed.addEventListener("click", () => {
   buySpeedUpgrade(7);
 });
 
+const upgradeElements = [
+  tomatSauceUpgrade,
+  ostUpgrade,
+  pølserUpgrade,
+  baconUpgrade,
+  kebabUpgrade,
+  trøffelUpgrade,
+  workerUpgrade,
+  workSpeed,
+];
+
+function updateAffordable() {
+  upgradeElements.forEach((element, i) => {
+    const canAfford = dollars >= upgrades[i].cost;
+    element.classList.toggle("affordable", canAfford);
+    element.classList.toggle("expensive", !canAfford);
+  });
+}
+
 function buyUpgrade(int) {
   if (dollars >= upgrades[int].cost) {
     upgrades[int].amount++;
@@ -189,6 +208,7 @@ function updateStats() {
   clickCount.textContent = clicks;
   workSpeedAmount.textContent =
     1 + upgrades[7].amount * upgrades[7].speed + "x";
+  updateAffordable();
 }
 
 function updateCPS() {
@@ -200,6 +220,7 @@ function updateCPS() {
 workSpeedAmount.textContent = 1 + upgrades[7].amount * upgrades[7].speed + "x";
 
 clicksPerSecond();
+updateStats();
 
 function addImage(int) {
   const pizzaButton = document.querySelector(".pizza");
