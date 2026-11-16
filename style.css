@@ -95,6 +95,8 @@ section p {
 #menu {
   justify-self: center;
   color: var(--text-color);
+  padding-top: 25px;
+  font-size: 1.5vw;
 }
 
 .right-side {
