@@ -187,10 +187,10 @@ function addPoint() {
 
 function clicksPerSecond() {
   setInterval(() => {
-    dollars += getDollarsPerSecond();
+    dollars += getDollarsPerSecond() * 0.01;
     updateStats();
     updateCPS();
-  }, 1000);
+  }, 10);
 }
 
 function getSpeedMultiplier() {
@@ -234,8 +234,24 @@ function addImage(int) {
       img.alt = "tomatSauce";
       break;
     case 1:
-      img.src = "images/+02_tomatsovs.png";
-      img.alt = "tomatSauce";
+      img.src = "images/03_ost.png";
+      img.alt = "ost";
+      break;
+    case 2:
+      img.src = "images/04_polser.png";
+      img.alt = "pølser";
+      break;
+    case 3:
+      img.src = "images/05_bacon.png";
+      img.alt = "bacon";
+      break;
+    case 4:
+      img.src = "images/06_kebab.png";
+      img.alt = "kebab";
+      break;
+    case 5:
+      img.src = "images/07_truffel.png";
+      img.alt = "trøffel";
       break;
   }
 
