@@ -110,28 +110,33 @@ section p {
   list-style: none;
   align-items: center;
   justify-self: center;
-  width: 60%;
+  width: 75%;
 }
 
 .right-side ul li {
   border: 2px solid var(--text-color);
   border-radius: 20px;
   margin-top: 10px;
+  margin-left: 10px;
+  white-space: nowrap;
 }
 
 .right-side ul li button {
   padding: 10px;
-  font-size: 1.8rem;
-  width: 80%;
+  font-size: 2vw;
+  width: 67%;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   text-wrap: nowrap;
+  min-width: fit-content;
   cursor: pointer;
 }
 
 .right-side ul li span {
-  font-size: 2rem;
-  padding: 10px;
+  font-size: 2vw;
+  margin: auto;
+  text-align: center;
+  padding-left: 5px;
 }
 
 .affordable {
