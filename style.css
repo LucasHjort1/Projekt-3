@@ -110,12 +110,7 @@ section p {
   list-style: none;
   align-items: center;
   justify-self: center;
-  margin-right: 40px;
   width: 60%;
-}
-
-.right-side ul:not(:last-child) {
-  margin-top: 180px;
 }
 
 .right-side ul li {
@@ -123,6 +118,7 @@ section p {
   border-radius: 20px;
   margin-top: 10px;
 }
+
 .right-side ul li button {
   padding: 10px;
   font-size: 1.8rem;
@@ -144,4 +140,12 @@ section p {
 
 .expensive {
   background-color: #c0392b;
+}
+
+.upgradeButtons {
+  margin-top: 150px;
+  max-height: 70%;
+  overflow: scroll;
+  overflow-x: hidden;
+  width: 90%;
 }

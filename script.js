@@ -134,8 +134,6 @@ function buyUpgrade(int) {
     updateUpgrades();
     updateStats();
     updateCPS();
-  } else {
-    alert("You don't have enough money to buy this upgrade!");
   }
 }
 
@@ -147,8 +145,6 @@ function buyCPSUpgrade(int) {
     updateUpgrades();
     updateStats();
     updateCPS();
-  } else {
-    alert("You don't have enough money to buy this upgrade!");
   }
 }
 
@@ -160,8 +156,6 @@ function buySpeedUpgrade(int) {
     updateUpgrades();
     updateStats();
     updateCPS();
-  } else {
-    alert("You don't have enough money to buy this upgrade!");
   }
 }
 
