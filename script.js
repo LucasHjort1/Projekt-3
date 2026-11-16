@@ -225,8 +225,8 @@ updateStats();
 function addImage(int) {
   const pizzaButton = document.querySelector(".pizza");
   const img = document.createElement("img");
-  img.style.maxWidth = "500px";
-  img.style.maxHeight = "500px";
+  img.style.maxWidth = "400px";
+  img.style.maxHeight = "400px";
 
   switch (int) {
     case 0:
