@@ -2,6 +2,7 @@ let dollars = 0;
 let clicks = 1;
 let cps = 0;
 let imgHeight = 3;
+let boosterMultiplier = 1;
 
 const upgrades = [
   {
@@ -178,8 +179,48 @@ const dollarCount = document.querySelector("#dollarCount");
 const clickCount = document.querySelector("#clickCount");
 const cpsCount = document.querySelector("#cpsCount");
 
+const boosterArea = document.querySelector(".left-side");
+const boosterSound = new Audio("boosterMusic.mp3");
+
+function spawnBooster() {
+  const booster = document.createElement("img");
+  booster.src = "images/booster.webp";
+  booster.alt = "Booster";
+  booster.classList.add("booster");
+
+  // tilfældig placering i procent, så den altid er inde i sectionen
+  booster.style.left = Math.random() * 80 + "%";
+  booster.style.top = Math.random() * 80 + "%";
+
+  booster.addEventListener("click", () => {
+    boosterSound.play();
+    boosterMultiplier = 10;
+    booster.remove();
+
+    setTimeout(() => {
+      boosterMultiplier = 1;
+    }, 10000); // 10 sekunder
+  });
+
+  boosterArea.appendChild(booster);
+
+  setTimeout(() => {
+    booster.remove();
+  }, 15000); // forsvinder efter 15 sekunder
+}
+
+function scheduleBooster() {
+  const delay = 10000 + Math.random() * 100000; // 10-100 sekunder
+  setTimeout(() => {
+    spawnBooster();
+    scheduleBooster();
+  }, delay);
+}
+
+scheduleBooster();
+
 function addPoint() {
-  dollars += clicks;
+  dollars += clicks * boosterMultiplier;
   updateStats();
 }
 
@@ -200,14 +241,20 @@ function getSpeedMultiplier() {
 }
 
 function getDollarsPerSecond() {
-  return upgrades[6].amount * upgrades[6].cps * getSpeedMultiplier() * clicks;
+  return (
+    upgrades[6].amount *
+    upgrades[6].cps *
+    getSpeedMultiplier() *
+    clicks *
+    boosterMultiplier
+  );
 }
 
 function updateStats() {
   dollarCount.textContent = dollars.toLocaleString("en-US", {
     maximumFractionDigits: 0,
   });
-  clickCount.textContent = clicks;
+  clickCount.textContent = clicks * boosterMultiplier;
   workSpeedAmount.textContent =
     1 + upgrades[7].amount * upgrades[7].speed + "x";
   updateAffordable();
