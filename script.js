@@ -1,6 +1,7 @@
 let dollars = 0;
 let clicks = 1;
 let cps = 0;
+let imgHeight = 3;
 
 const upgrades = [
   {
@@ -219,8 +220,8 @@ updateStats();
 function addImage(int) {
   const pizzaButton = document.querySelector(".pizza");
   const img = document.createElement("img");
-  img.style.maxWidth = "400px";
-  img.style.maxHeight = "400px";
+  img.style.maxWidth = "350px";
+  img.style.maxHeight = "350px";
 
   switch (int) {
     case 0:
@@ -237,24 +238,24 @@ function addImage(int) {
     case 2:
       img.src = "images/04_polser.png";
       img.alt = "pølser";
-      img.style.zIndex = 3;
+      img.style.zIndex = imgHeight;
       break;
     case 3:
       img.src = "images/05_bacon.png";
       img.alt = "bacon";
-      img.style.zIndex = 3;
+      img.style.zIndex = imgHeight;
       break;
     case 4:
       img.src = "images/06_kebab.png";
       img.alt = "kebab";
-      img.style.zIndex = 3;
+      img.style.zIndex = imgHeight;
       break;
     case 5:
       img.src = "images/07_truffel.png";
       img.alt = "trøffel";
-      img.style.zIndex = 3;
+      img.style.zIndex = imgHeight;
       break;
   }
-
+  imgHeight++;
   pizzaButton.appendChild(img);
 }

@@ -32,10 +32,10 @@ main {
 }
 
 .pizza {
-  width: 400px;
-  height: 400px;
-  max-width: 400px;
-  max-height: 400px;
+  width: 350px;
+  height: 350px;
+  max-width: 350px;
+  max-height: 350px;
   padding: 0;
   border: none;
   background: none;
