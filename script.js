@@ -135,6 +135,7 @@ function buyUpgrade(int) {
     updateUpgrades();
     updateStats();
     updateCPS();
+    saveGame();
   }
 }
 
@@ -146,6 +147,7 @@ function buyCPSUpgrade(int) {
     updateUpgrades();
     updateStats();
     updateCPS();
+    saveGame();
   }
 }
 
@@ -157,6 +159,7 @@ function buySpeedUpgrade(int) {
     updateUpgrades();
     updateStats();
     updateCPS();
+    saveGame();
   }
 }
 
@@ -187,6 +190,10 @@ function clicksPerSecond() {
     updateCPS();
   }, 10);
 }
+
+setInterval(() => {
+  saveGame();
+}, 60000);
 
 function getSpeedMultiplier() {
   return 1 + upgrades[7].amount * upgrades[7].speed;
@@ -259,3 +266,48 @@ function addImage(int) {
   imgHeight++;
   pizzaButton.appendChild(img);
 }
+
+const saveKey = "pizzaClicker";
+
+function saveGame() {
+  const savedUpgrades = [];
+  upgrades.forEach((upgrade) => {
+    savedUpgrades.push({
+      amount: upgrade.amount,
+      cost: upgrade.cost,
+    });
+  });
+
+  const save = {
+    dollars: dollars,
+    clicks: clicks,
+    upgrades: savedUpgrades,
+  };
+
+  const saveText = JSON.stringify(save);
+  localStorage.setItem(saveKey, saveText);
+}
+
+function loadGame() {
+  const saveText = localStorage.getItem(saveKey);
+
+  if (saveText === null) {
+    return;
+  }
+
+  const save = JSON.parse(saveText);
+
+  dollars = save.dollars;
+  clicks = save.clicks;
+
+  upgrades.forEach((upgrade, i) => {
+    upgrade.amount = save.upgrades[i].amount;
+    upgrade.cost = save.upgrades[i].cost;
+  });
+
+  updateUpgrades();
+  updateStats();
+  updateCPS();
+}
+
+loadGame();
