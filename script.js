@@ -185,10 +185,10 @@ function addPoint() {
 
 function clicksPerSecond() {
   setInterval(() => {
-    dollars += getDollarsPerSecond() * 0.01;
+    dollars += getDollarsPerSecond() * 0.03;
     updateStats();
     updateCPS();
-  }, 10);
+  }, 30);
 }
 
 setInterval(() => {
