@@ -226,26 +226,33 @@ function addImage(int) {
     case 0:
       img.src = "images/02_tomatsovs.png";
       img.alt = "tomatSauce";
+      img.style.zIndex = 1;
       break;
     case 1:
       img.src = "images/03_ost.png";
       img.alt = "ost";
+      img.style.zIndex = 2;
+
       break;
     case 2:
       img.src = "images/04_polser.png";
       img.alt = "pølser";
+      img.style.zIndex = 3;
       break;
     case 3:
       img.src = "images/05_bacon.png";
       img.alt = "bacon";
+      img.style.zIndex = 3;
       break;
     case 4:
       img.src = "images/06_kebab.png";
       img.alt = "kebab";
+      img.style.zIndex = 3;
       break;
     case 5:
       img.src = "images/07_truffel.png";
       img.alt = "trøffel";
+      img.style.zIndex = 3;
       break;
   }
 
