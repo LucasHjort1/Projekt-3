@@ -186,6 +186,7 @@ function spawnBooster() {
   const booster = document.createElement("img");
   booster.src = "images/booster.webp";
   booster.alt = "Booster";
+  booster.style.zIndex = 10;
   booster.classList.add("booster");
 
   // tilfældig placering i procent, så den altid er inde i sectionen
@@ -199,6 +200,8 @@ function spawnBooster() {
 
     setTimeout(() => {
       boosterMultiplier = 1;
+      boosterSound.pause();
+      boosterSound.currentTime = 0;
     }, 10000); // 10 sekunder
   });
 
@@ -254,7 +257,13 @@ function updateStats() {
   dollarCount.textContent = dollars.toLocaleString("en-US", {
     maximumFractionDigits: 0,
   });
-  clickCount.textContent = clicks * boosterMultiplier;
+  clickCount.textContent = (clicks * boosterMultiplier).toLocaleString(
+    "en-US",
+    {
+      maximumFractionDigits: 0,
+    },
+  );
+
   workSpeedAmount.textContent =
     1 + upgrades[7].amount * upgrades[7].speed + "x";
   updateAffordable();
