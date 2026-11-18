@@ -296,32 +296,78 @@ function addImage(int) {
         img.src = "images/03_ost.png";
         img.alt = "ost";
         img.style.zIndex = 2;
-
         break;
       case 2:
         img.src = "images/04_polser.png";
         img.alt = "pølser";
         img.style.zIndex = imgHeight;
+        img.classList.add("pølser");
+        imgHeight++;
         break;
       case 3:
         img.src = "images/05_bacon.png";
         img.alt = "bacon";
         img.style.zIndex = imgHeight;
+        img.classList.add("bacon");
+        imgHeight++;
         break;
       case 4:
         img.src = "images/06_kebab.png";
         img.alt = "kebab";
         img.style.zIndex = imgHeight;
+        img.classList.add("kebab");
+        imgHeight++;
         break;
       case 5:
         img.src = "images/07_truffel.png";
         img.alt = "trøffel";
         img.style.zIndex = imgHeight;
+        img.classList.add("trøffel");
+        imgHeight++;
         break;
     }
-    imgHeight++;
     pizzaButton.appendChild(img);
+  } else if (upgrades[int].amount > 1) {
+    switch (int) {
+      case 2:
+        bringToFront(document.querySelector(".pølser"));
+        break;
+      case 3:
+        bringToFront(document.querySelector(".bacon"));
+        break;
+      case 4:
+        bringToFront(document.querySelector(".kebab"));
+        break;
+      case 5:
+        bringToFront(document.querySelector(".trøffel"));
+        break;
+    }
   }
+}
+
+function bringToFront(element) {
+  const toppings = Array.from(
+    document.querySelectorAll(".pølser, .bacon, .kebab, .trøffel"),
+  );
+
+  // Sort toppings by their current z-index (lowest to highest)
+  toppings.sort((a, b) => {
+    return Number(a.style.zIndex) - Number(b.style.zIndex);
+  });
+
+  // Remove the selected element from the array
+  const index = toppings.indexOf(element);
+  toppings.splice(index, 1);
+
+  // Add it to the end (front)
+  toppings.push(element);
+
+  // Reassign z-index values starting at 3
+  toppings.forEach((img, i) => {
+    img.style.zIndex = i + 3;
+  });
+
+  imgHeight = toppings.length + 3;
 }
 
 const saveKey = "pizzaClicker";
