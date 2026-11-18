@@ -281,46 +281,47 @@ clicksPerSecond();
 updateStats();
 
 function addImage(int) {
-  const pizzaButton = document.querySelector(".pizza");
-  const img = document.createElement("img");
-  img.style.maxWidth = "350px";
-  img.style.maxHeight = "350px";
+  if (upgrades[int].amount != 0 && upgrades[int].amount <= 1) {
+    const pizzaButton = document.querySelector(".pizza");
+    const img = document.createElement("img");
+    img.style.maxWidth = "350px";
+    img.style.maxHeight = "350px";
+    switch (int) {
+      case 0:
+        img.src = "images/02_tomatsovs.png";
+        img.alt = "Pizza Sauce";
+        img.style.zIndex = 1;
+        break;
+      case 1:
+        img.src = "images/03_ost.png";
+        img.alt = "ost";
+        img.style.zIndex = 2;
 
-  switch (int) {
-    case 0:
-      img.src = "images/02_tomatsovs.png";
-      img.alt = "tomatSauce";
-      img.style.zIndex = 1;
-      break;
-    case 1:
-      img.src = "images/03_ost.png";
-      img.alt = "ost";
-      img.style.zIndex = 2;
-
-      break;
-    case 2:
-      img.src = "images/04_polser.png";
-      img.alt = "pølser";
-      img.style.zIndex = imgHeight;
-      break;
-    case 3:
-      img.src = "images/05_bacon.png";
-      img.alt = "bacon";
-      img.style.zIndex = imgHeight;
-      break;
-    case 4:
-      img.src = "images/06_kebab.png";
-      img.alt = "kebab";
-      img.style.zIndex = imgHeight;
-      break;
-    case 5:
-      img.src = "images/07_truffel.png";
-      img.alt = "trøffel";
-      img.style.zIndex = imgHeight;
-      break;
+        break;
+      case 2:
+        img.src = "images/04_polser.png";
+        img.alt = "pølser";
+        img.style.zIndex = imgHeight;
+        break;
+      case 3:
+        img.src = "images/05_bacon.png";
+        img.alt = "bacon";
+        img.style.zIndex = imgHeight;
+        break;
+      case 4:
+        img.src = "images/06_kebab.png";
+        img.alt = "kebab";
+        img.style.zIndex = imgHeight;
+        break;
+      case 5:
+        img.src = "images/07_truffel.png";
+        img.alt = "trøffel";
+        img.style.zIndex = imgHeight;
+        break;
+    }
+    imgHeight++;
+    pizzaButton.appendChild(img);
   }
-  imgHeight++;
-  pizzaButton.appendChild(img);
 }
 
 const saveKey = "pizzaClicker";
