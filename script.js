@@ -180,7 +180,7 @@ const clickCount = document.querySelector("#clickCount");
 const cpsCount = document.querySelector("#cpsCount");
 
 const boosterArea = document.querySelector(".left-side");
-const boosterSound = new Audio("boosterMusic.mp3");
+const boosterSound = new Audio("sounds/boosterMusic.mp3");
 
 function spawnBooster() {
   const booster = document.createElement("img");
