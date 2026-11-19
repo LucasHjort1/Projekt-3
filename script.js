@@ -222,9 +222,25 @@ function scheduleBooster() {
 
 scheduleBooster();
 
-function addPoint() {
+function addPoint(event) {
   dollars += clicks * boosterMultiplier;
   updateStats();
+  showClickEffect(event);
+}
+
+function showClickEffect(event) {
+  const clickEffect = document.createElement("span");
+  clickEffect.classList.add("click-effect");
+  clickEffect.textContent = "+" + clicks * boosterMultiplier + "$";
+
+  clickEffect.style.left = event.offsetX + "px";
+  clickEffect.style.top = event.offsetY + "px";
+
+  document.querySelector(".pizza").appendChild(clickEffect);
+
+  clickEffect.addEventListener("animationend", () => {
+    clickEffect.remove();
+  });
 }
 
 function clicksPerSecond() {

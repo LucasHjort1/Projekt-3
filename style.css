@@ -5,6 +5,7 @@
   --Affordable-color: #3aa45a;
   --Expensive-color: #c04a3c;
 }
+
 body {
   margin: 0;
   padding: 0;
@@ -45,6 +46,7 @@ main {
   position: relative;
   display: inline-block;
 }
+
 .pizza img {
   border-radius: 50%;
   display: block;
@@ -174,22 +176,50 @@ main {
   border-radius: 50%;
 }
 
+.click-effect {
+  position: absolute;
+  color: #31a260;
+  font-size: 28px;
+  font-weight: bold;
+  pointer-events: none;
+  z-index: 20;
+  animation: floatUp 1s ease-out forwards;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-80px);
+    opacity: 0;
+  }
+}
+
+
 @keyframes pop {
   0% {
     transform: scale(0);
   }
+
   70% {
     transform: scale(1.5);
   }
+
   100% {
     transform: scale(1);
   }
 }
+
 @keyframes pulse {
+
   0%,
   100% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.15);
   }
