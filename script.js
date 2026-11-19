@@ -291,11 +291,13 @@ function addImage(int) {
         img.src = "images/02_tomatsovs.png";
         img.alt = "Pizza Sauce";
         img.style.zIndex = 1;
+        img.classList.add("pizzaSauce");
         break;
       case 1:
         img.src = "images/03_ost.png";
         img.alt = "ost";
         img.style.zIndex = 2;
+        img.classList.add("cheese");
         break;
       case 2:
         img.src = "images/04_polser.png";
@@ -381,14 +383,85 @@ function saveGame() {
     });
   });
 
+  const classes = [
+    ".pizzaSauce",
+    ".cheese",
+    ".pølser",
+    ".bacon",
+    ".kebab",
+    ".trøffel",
+  ];
+  const savedUpgradeImg = [];
+  for (let i = 0; i < classes.length; i++) {
+    const el = document.querySelector(classes[i]);
+    if (el) {
+      savedUpgradeImg[i] = Number(el.style.zIndex);
+    } else {
+      savedUpgradeImg[i] = 0;
+    }
+  }
+
   const save = {
     dollars: dollars,
     clicks: clicks,
     upgrades: savedUpgrades,
+    images: savedUpgradeImg,
   };
 
   const saveText = JSON.stringify(save);
   localStorage.setItem(saveKey, saveText);
+}
+
+function reAddImage(int, zIndex) {
+  if (upgrades[int].amount != 0) {
+    const pizzaButton = document.querySelector(".pizza");
+    const img = document.createElement("img");
+    img.style.maxWidth = "350px";
+    img.style.maxHeight = "350px";
+    switch (int) {
+      case 0:
+        img.src = "images/02_tomatsovs.png";
+        img.alt = "Pizza Sauce";
+        img.style.zIndex = 1;
+        img.classList.add("pizzaSauce");
+        break;
+      case 1:
+        img.src = "images/03_ost.png";
+        img.alt = "ost";
+        img.style.zIndex = 2;
+        img.classList.add("cheese");
+        break;
+      case 2:
+        img.src = "images/04_polser.png";
+        img.alt = "pølser";
+        img.style.zIndex = zIndex;
+        img.classList.add("pølser");
+        imgHeight++;
+        break;
+      case 3:
+        img.src = "images/05_bacon.png";
+        img.alt = "bacon";
+        img.style.zIndex = zIndex;
+        img.classList.add("bacon");
+        imgHeight++;
+        break;
+      case 4:
+        img.src = "images/06_kebab.png";
+        img.alt = "kebab";
+        img.style.zIndex = zIndex;
+        img.classList.add("kebab");
+        imgHeight++;
+        break;
+      case 5:
+        img.src = "images/07_truffel.png";
+        img.alt = "trøffel";
+        img.style.zIndex = zIndex;
+        img.classList.add("trøffel");
+        imgHeight++;
+        break;
+    }
+    pizzaButton.appendChild(img);
+  }
 }
 
 function loadGame() {
@@ -407,6 +480,12 @@ function loadGame() {
     upgrade.amount = save.upgrades[i].amount;
     upgrade.cost = save.upgrades[i].cost;
   });
+
+  for (let i = 0; i < save.images.length; i++) {
+    if (upgrades[i].amount != 0) {
+      reAddImage(i, save.images[i]);
+    }
+  }
 
   updateUpgrades();
   updateStats();
