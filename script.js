@@ -197,11 +197,15 @@ function spawnBooster() {
     boosterSound.play();
     boosterMultiplier = 10;
     booster.remove();
+    document.querySelector(".left-side").style.backgroundImage =
+      "url('images/boosterimg.png')";
 
     setTimeout(() => {
       boosterMultiplier = 1;
       boosterSound.pause();
       boosterSound.currentTime = 0;
+      document.querySelector(".left-side").style.backgroundImage =
+        "url('images/pizzakoekken_1280x1080.webp')";
     }, 10000); // 10 sekunder
   });
 
