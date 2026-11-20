@@ -178,8 +178,8 @@ main {
 
 .click-effect {
   position: absolute;
-  color: #31a260;
-  font-size: 28px;
+  color: #067d38;
+  font-size: 25px;
   font-weight: bold;
   pointer-events: none;
   z-index: 20;
