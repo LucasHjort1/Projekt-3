@@ -186,6 +186,17 @@ function updateUpgrades() {
   workSpeedAmount.textContent = upgrades[7].amount;
 }
 
+function updateCosts() {
+  tomatSauceCost.textContent = upgrades[0].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
+  ostCost.textContent = upgrades[1].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
+  pølserCost.textContent = upgrades[2].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
+  baconCost.textContent = upgrades[3].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
+  kebabCost.textContent = upgrades[4].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
+  trøffelCost.textContent = upgrades[5].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
+  workerCost.textContent = upgrades[6].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
+  workSpeedCost.textContent = upgrades[7].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
+}
+
 const dollarCount = document.querySelector("#dollarCount");
 const clickCount = document.querySelector("#clickCount");
 const cpsCount = document.querySelector("#cpsCount");
@@ -308,8 +319,7 @@ function updateCPS() {
 
 workSpeedAmount.textContent = 1 + upgrades[7].amount * upgrades[7].speed + "x";
 
-clicksPerSecond();
-updateStats();
+
 
 function addImage(int) {
   if (upgrades[int].amount != 0 && upgrades[int].amount <= 1) {
@@ -525,6 +535,8 @@ function loadGame() {
 
 loadGame();
 updateCosts();
+clicksPerSecond();
+updateStats();
 
 const textSaveGame = document.querySelector("#oneMinSaveText");
 
@@ -549,14 +561,3 @@ reset.addEventListener("click", () => {
     location.reload();
   }
 });
-
-function updateCosts() {
-  tomatSauceCost.textContent = upgrades[0].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
-  ostCost.textContent = upgrades[1].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
-  pølserCost.textContent = upgrades[2].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
-  baconCost.textContent = upgrades[3].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
-  kebabCost.textContent = upgrades[4].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
-  trøffelCost.textContent = upgrades[5].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
-  workerCost.textContent = upgrades[6].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
-  workSpeedCost.textContent = upgrades[7].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
-}
