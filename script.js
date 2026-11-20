@@ -61,48 +61,56 @@ pizza.addEventListener("click", addPoint);
 // Event listener for upgrades
 const tomatSauceAmount = document.querySelector("#tomatSauceAmount");
 const tomatSauceUpgrade = document.querySelector("#tomatSauce");
+const tomatSauceCost = document.querySelector("#tomatSauceCost");
 tomatSauceUpgrade.addEventListener("click", () => {
   buyUpgrade(0);
 });
 
 const ostAmount = document.querySelector("#ostAmount");
 const ostUpgrade = document.querySelector("#ost");
+const ostCost = document.querySelector("#ostCost");
 ostUpgrade.addEventListener("click", () => {
   buyUpgrade(1);
 });
 
 const pølserAmount = document.querySelector("#pølserAmount");
 const pølserUpgrade = document.querySelector("#pølser");
+const pølserCost = document.querySelector("#pølserCost");
 pølserUpgrade.addEventListener("click", () => {
   buyUpgrade(2);
 });
 
 const baconAmount = document.querySelector("#baconAmount");
 const baconUpgrade = document.querySelector("#bacon");
+const baconCost = document.querySelector("#baconCost");
 baconUpgrade.addEventListener("click", () => {
   buyUpgrade(3);
 });
 
 const kebabAmount = document.querySelector("#kebabAmount");
 const kebabUpgrade = document.querySelector("#kebab");
+const kebabCost = document.querySelector("#kebabCost");
 kebabUpgrade.addEventListener("click", () => {
   buyUpgrade(4);
 });
 
 const trøffelAmount = document.querySelector("#trøffelAmount");
 const trøffelUpgrade = document.querySelector("#trøffel");
+const trøffelCost = document.querySelector("#trøffelCost");
 trøffelUpgrade.addEventListener("click", () => {
   buyUpgrade(5);
 });
 
 const workerAmount = document.querySelector("#workerAmount");
 const workerUpgrade = document.querySelector("#worker");
+const workerCost = document.querySelector("#workerCost");
 workerUpgrade.addEventListener("click", () => {
   buyCPSUpgrade(6);
 });
 
 const workSpeedAmount = document.querySelector("#workSpeedAmount");
 const workSpeed = document.querySelector("#workSpeed");
+const workSpeedCost = document.querySelector("#workSpeedCost");
 workSpeed.addEventListener("click", () => {
   buySpeedUpgrade(7);
 });
@@ -136,6 +144,7 @@ function buyUpgrade(int) {
     updateUpgrades();
     updateStats();
     updateCPS();
+    updateCosts();
     saveGame();
   }
 }
@@ -148,6 +157,7 @@ function buyCPSUpgrade(int) {
     updateUpgrades();
     updateStats();
     updateCPS();
+    updateCosts();
     saveGame();
   }
 }
@@ -160,6 +170,7 @@ function buySpeedUpgrade(int) {
     updateUpgrades();
     updateStats();
     updateCPS();
+    updateCosts();
     saveGame();
   }
 }
@@ -513,3 +524,39 @@ function loadGame() {
 }
 
 loadGame();
+updateCosts();
+
+const textSaveGame = document.querySelector("#oneMinSaveText");
+
+function showSaveMessage() {
+  textSaveGame.classList.add("show");
+
+  setTimeout(() => {
+    textSaveGame.classList.remove("show");
+  }, 2000);
+}
+
+setInterval(() => {
+  saveGame();
+  showSaveMessage();
+}, 60000);
+
+const reset = document.querySelector("#resetButton");
+
+reset.addEventListener("click", () => {
+  if (confirm("Do you want to reset the game?")) {
+    localStorage.removeItem(saveKey);
+    location.reload();
+  }
+});
+
+function updateCosts() {
+  tomatSauceCost.textContent = upgrades[0].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
+  ostCost.textContent = upgrades[1].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
+  pølserCost.textContent = upgrades[2].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
+  baconCost.textContent = upgrades[3].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
+  kebabCost.textContent = upgrades[4].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
+  trøffelCost.textContent = upgrades[5].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
+  workerCost.textContent = upgrades[6].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
+  workSpeedCost.textContent = upgrades[7].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
+}

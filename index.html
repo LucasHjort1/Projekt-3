@@ -1,70 +1,92 @@
 <!doctype html>
 <html lang="da">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pizza Clicker</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="icon" href="images/icon1.png" />
-    <script src="script.js" defer></script>
-  </head>
-  <body>
-    <main>
-      <!--left-side-pizza-->
-      <section class="left-side">
-        <h1>Pizza Clicker!</h1>
-        <p>Dollars: <span id="dollarCount">0</span>$</p>
-        <p>Clicks: <span id="clickCount">1</span>$</p>
-        <p>Dollars Per Second: <span id="cpsCount">0</span></p>
-        <button class="pizza">
-          <img src="images/01_dej.png" />
-        </button>
-      </section>
 
-      <!--right-side-bar-->
-      <section class="right-side">
-        <div class="upgradeButtons">
-          <p class="menu">Dollars per click</p>
-          <ul>
-            <li>
-              <button id="tomatSauce">Tomato sauce</button>
-              <span id="tomatSauceAmount">0</span>
-            </li>
-            <li>
-              <button id="ost">Cheese</button>
-              <span id="ostAmount">0</span>
-            </li>
-            <li>
-              <button id="pølser">Sausage</button>
-              <span id="pølserAmount">0</span>
-            </li>
-            <li>
-              <button id="bacon">Bacon</button>
-              <span id="baconAmount">0</span>
-            </li>
-            <li>
-              <button id="kebab">Kebab</button>
-              <span id="kebabAmount">0</span>
-            </li>
-            <li>
-              <button id="trøffel">Truffel</button>
-              <span id="trøffelAmount">0</span>
-            </li>
-          </ul>
-          <!--Pizzas Per Second upgrades-->
-          <p class="menu">Passive income</p>
-          <ul>
-            <li>
-              <button id="worker">Worker</button>
-              <span id="workerAmount">0</span>
-            </li>
-            <li>
-              <button id="workSpeed">Worker bonus</button>
-              <span id="workSpeedAmount"></span>
-            </li>
-          </ul>
-        </div>
-      </section>
-    </main>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pizza Clicker</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="icon" href="images/icon1.png" />
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <main>
+    <!--left-side-pizza-->
+    <section class="left-side">
+      <h1>Pizza Clicker!</h1>
+      <p>Dollars: <span id="dollarCount">0</span>$</p>
+      <p>Clicks: <span id="clickCount">1</span>$</p>
+      <p>Dollars Per Second: <span id="cpsCount">0</span></p>
+      <button class="pizza">
+        <img src="images/01_dej.png" />
+      </button>
+    </section>
+
+    <!--right-side-bar-->
+    <section class="right-side">
+      <div class="upgradeButtons">
+        <p class="menu">Dollars per click</p>
+        <ul>
+          <li>
+            <button id="tomatSauce">Tomato sauce
+              <span id="tomatSauceCost">0</span>
+            </button>
+            <span id="tomatSauceAmount">0</span>
+          </li>
+          <li>
+            <button id="ost">Cheese
+              <span id="ostCost">0</span>
+            </button>
+            <span id="ostAmount">0</span>
+          </li>
+          <li>
+            <button id="pølser">Sausage
+              <span id="pølserCost">0</span>
+            </button>
+            <span id="pølserAmount">0</span>
+          </li>
+          <li>
+            <button id="bacon">Bacon
+              <span id="baconCost">0</span>
+            </button>
+            <span id="baconAmount">0</span>
+          </li>
+          <li>
+            <button id="kebab">Kebab
+              <span id="kebabCost">0</span>
+            </button>
+            <span id="kebabAmount">0</span>
+          </li>
+          <li>
+            <button id="trøffel">Truffel
+              <span id="trøffelCost">0</span>
+            </button>
+            <span id="trøffelAmount">0</span>
+          </li>
+        </ul>
+        <!--Pizzas Per Second upgrades-->
+        <p class="menu">Passive income</p>
+        <ul>
+          <li>
+            <button id="worker">Worker
+              <span id="workerCost">0</span>
+            </button>
+            <span id="workerAmount">0</span>
+          </li>
+          <li>
+            <button id="workSpeed">Worker bonus
+              <span id="workSpeedCost">0</span>
+            </button>
+            <span id="workSpeedAmount"></span>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <!--middel-save-text-->
+  <p id="oneMinSaveText">Game saved</p>
+  <button id="resetButton" title="reset">↻</button>
+</body>
+
 </html>

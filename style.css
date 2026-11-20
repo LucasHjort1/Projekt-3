@@ -140,6 +140,11 @@ main {
   cursor: pointer;
 }
 
+.right-side ul li button span {
+  display: block;
+  font-size: 1.4vw;
+}
+
 .right-side ul li span {
   font-size: 2vw;
   margin: auto;
@@ -223,4 +228,57 @@ main {
   50% {
     transform: scale(1.15);
   }
+}
+
+#oneMinSaveText {
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  display: none;
+
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  border: 2px solid var(--text-color);
+  box-shadow: 4px 4px var(--text-color);
+  padding: 10px;
+
+  margin: auto;
+  width: fit-content;
+  z-index: 30;
+}
+
+#oneMinSaveText.show {
+  display: block;
+  animation: saveTextFloating 1s ease-out;
+}
+
+@keyframes saveTextFloating {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+#resetButton {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  z-index: 50;
+
+  background-color: darkred;
+  color: darkorange;
+  border: 2px solid var(--text-color);
+  border-radius: 10px;
+  box-shadow: 4px 4px var(--text-color);
+  width: 50px;
+  height: 50px;
+  font-size: 35px;
+  cursor: pointer;
 }
