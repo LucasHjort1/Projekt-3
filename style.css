@@ -279,6 +279,9 @@ main {
   height: 50px;
   font-size: 35px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center + 6px;
 }
 
 .howToPlayButton {
@@ -286,6 +289,9 @@ main {
   bottom: 10px;
   left: 130px;
   z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .prettyButton {
@@ -365,6 +371,9 @@ main {
   bottom: 10px;
   left: 70px;
   z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #saveButton img {
