@@ -8,49 +8,49 @@ const upgrades = [
   {
     name: "Pizza sauce",
     amount: 0,
-    cost: 10,
+    cost: 25,
     clicks: 1,
   },
   {
     name: "Ost",
     amount: 0,
-    cost: 100,
+    cost: 250,
     clicks: 5,
   },
   {
     name: "Pølser",
     amount: 0,
-    cost: 1000,
+    cost: 1500,
     clicks: 10,
   },
   {
     name: "Bacon",
     amount: 0,
-    cost: 2500,
+    cost: 5000,
     clicks: 25,
   },
   {
     name: "Kebab",
     amount: 0,
-    cost: 5000,
+    cost: 10000,
     clicks: 50,
   },
   {
     name: "Trøffel",
     amount: 0,
-    cost: 10000,
+    cost: 25000,
     clicks: 100,
   },
   {
     name: "Worker",
     amount: 0,
-    cost: 5000,
+    cost: 1000,
     cps: 1,
   },
   {
     name: "Workspeed",
     amount: 0,
-    cost: 2500,
+    cost: 5000,
     speed: 0.5,
   },
 ];
@@ -153,7 +153,13 @@ function buyCPSUpgrade(int) {
   if (dollars >= upgrades[int].cost) {
     upgrades[int].amount++;
     dollars -= upgrades[int].cost;
-    upgrades[int].cost = Math.ceil(upgrades[int].cost * 1.5);
+
+    if (upgrades[int].amount === 1) {
+      upgrades[int].cost = 10000;
+    } else {
+      upgrades[int].cost = Math.ceil(upgrades[int].cost * 1.5);
+    }
+
     updateUpgrades();
     updateStats();
     updateCPS();
@@ -187,14 +193,22 @@ function updateUpgrades() {
 }
 
 function updateCosts() {
-  tomatSauceCost.textContent = upgrades[0].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
-  ostCost.textContent = upgrades[1].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
-  pølserCost.textContent = upgrades[2].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
-  baconCost.textContent = upgrades[3].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
-  kebabCost.textContent = upgrades[4].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
-  trøffelCost.textContent = upgrades[5].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
-  workerCost.textContent = upgrades[6].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
-  workSpeedCost.textContent = upgrades[7].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
+  tomatSauceCost.textContent =
+    upgrades[0].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
+  ostCost.textContent =
+    upgrades[1].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
+  pølserCost.textContent =
+    upgrades[2].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
+  baconCost.textContent =
+    upgrades[3].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
+  kebabCost.textContent =
+    upgrades[4].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
+  trøffelCost.textContent =
+    upgrades[5].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
+  workerCost.textContent =
+    upgrades[6].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
+  workSpeedCost.textContent =
+    upgrades[7].cost.toLocaleString("en-US", { notation: "compact" }) + "$";
 }
 
 const dollarCount = document.querySelector("#dollarCount");
@@ -319,14 +333,12 @@ function updateCPS() {
 
 workSpeedAmount.textContent = 1 + upgrades[7].amount * upgrades[7].speed + "x";
 
-
-
 function addImage(int) {
   if (upgrades[int].amount != 0 && upgrades[int].amount <= 1) {
     const pizzaButton = document.querySelector(".pizza");
     const img = document.createElement("img");
-    img.style.maxWidth = "350px";
-    img.style.maxHeight = "350px";
+    img.style.maxWidth = "320px";
+    img.style.maxHeight = "320px%";
     switch (int) {
       case 0:
         img.src = "images/02_tomatsovs.png";
