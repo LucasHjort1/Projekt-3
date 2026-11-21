@@ -570,11 +570,16 @@ setInterval(() => {
 }, 60000);
 
 const reset = document.querySelector("#resetButton");
+const save = document.querySelector("#saveButton");
 const shutDown = new Audio("sounds/window.mp3");
 
 function playShutDown() {
   shutDown.play();
 }
+save.addEventListener("click", () => {
+  saveGame();
+  showSaveMessage();
+});
 
 reset.addEventListener("click", () => {
   if (confirm("Do you want to reset the game?")) {

@@ -284,13 +284,13 @@ main {
 .howToPlayButton {
   position: fixed;
   bottom: 10px;
-  left: 70px;
+  left: 130px;
   z-index: 50;
 }
 
 .prettyButton {
   background-color: darkred;
-  color: darkorange;
+  color: #ff8c00;
   border: 2px solid var(--text-color);
   border-radius: 10px;
   box-shadow: 4px 4px var(--text-color);
@@ -358,4 +358,16 @@ main {
   #howToPlay {
     max-width: 40%;
   }
+}
+
+#saveButton {
+  position: fixed;
+  bottom: 10px;
+  left: 70px;
+  z-index: 50;
+}
+
+#saveButton img {
+  max-width: 100%;
+  max-height: 100%;
 }
