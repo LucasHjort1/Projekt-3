@@ -1,92 +1,143 @@
 <!doctype html>
 <html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pizza Clicker</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="icon" href="images/icon1.png" />
+    <script src="script.js" defer></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pizza Clicker</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="icon" href="images/icon1.png" />
-  <script src="script.js" defer></script>
-</head>
+  <body>
+    <main>
+      <!--left-side-pizza-->
+      <section class="left-side">
+        <h1>Pizza Clicker!</h1>
+        <p>Dollars: <span id="dollarCount">0</span>$</p>
+        <p>Clicks: <span id="clickCount">1</span>$</p>
+        <p>Dollars Per Second: <span id="cpsCount">0</span></p>
+        <button class="pizza">
+          <img src="images/01_dej.png" />
+        </button>
+      </section>
 
-<body>
-  <main>
-    <!--left-side-pizza-->
-    <section class="left-side">
-      <h1>Pizza Clicker!</h1>
-      <p>Dollars: <span id="dollarCount">0</span>$</p>
-      <p>Clicks: <span id="clickCount">1</span>$</p>
-      <p>Dollars Per Second: <span id="cpsCount">0</span></p>
-      <button class="pizza">
-        <img src="images/01_dej.png" />
-      </button>
-    </section>
-
-    <!--right-side-bar-->
-    <section class="right-side">
-      <div class="upgradeButtons">
-        <p class="menu">Dollars per click</p>
-        <ul>
-          <li>
-            <button id="tomatSauce">Tomato sauce
-              <span id="tomatSauceCost">0</span>
-            </button>
-            <span id="tomatSauceAmount">0</span>
-          </li>
-          <li>
-            <button id="ost">Cheese
-              <span id="ostCost">0</span>
-            </button>
-            <span id="ostAmount">0</span>
-          </li>
-          <li>
-            <button id="pølser">Sausage
-              <span id="pølserCost">0</span>
-            </button>
-            <span id="pølserAmount">0</span>
-          </li>
-          <li>
-            <button id="bacon">Bacon
-              <span id="baconCost">0</span>
-            </button>
-            <span id="baconAmount">0</span>
-          </li>
-          <li>
-            <button id="kebab">Kebab
-              <span id="kebabCost">0</span>
-            </button>
-            <span id="kebabAmount">0</span>
-          </li>
-          <li>
-            <button id="trøffel">Truffel
-              <span id="trøffelCost">0</span>
-            </button>
-            <span id="trøffelAmount">0</span>
-          </li>
-        </ul>
-        <!--Pizzas Per Second upgrades-->
-        <p class="menu">Passive income</p>
-        <ul>
-          <li>
-            <button id="worker">Worker
-              <span id="workerCost">0</span>
-            </button>
-            <span id="workerAmount">0</span>
-          </li>
-          <li>
-            <button id="workSpeed">Worker bonus
-              <span id="workSpeedCost">0</span>
-            </button>
-            <span id="workSpeedAmount"></span>
-          </li>
-        </ul>
+      <!--right-side-bar-->
+      <section class="right-side">
+        <div class="upgradeButtons">
+          <p class="menu">Dollars per click</p>
+          <ul>
+            <li>
+              <button id="tomatSauce">
+                Tomato sauce
+                <span id="tomatSauceCost">0</span>
+              </button>
+              <span id="tomatSauceAmount">0</span>
+            </li>
+            <li>
+              <button id="ost">
+                Cheese
+                <span id="ostCost">0</span>
+              </button>
+              <span id="ostAmount">0</span>
+            </li>
+            <li>
+              <button id="pølser">
+                Sausage
+                <span id="pølserCost">0</span>
+              </button>
+              <span id="pølserAmount">0</span>
+            </li>
+            <li>
+              <button id="bacon">
+                Bacon
+                <span id="baconCost">0</span>
+              </button>
+              <span id="baconAmount">0</span>
+            </li>
+            <li>
+              <button id="kebab">
+                Kebab
+                <span id="kebabCost">0</span>
+              </button>
+              <span id="kebabAmount">0</span>
+            </li>
+            <li>
+              <button id="trøffel">
+                Truffel
+                <span id="trøffelCost">0</span>
+              </button>
+              <span id="trøffelAmount">0</span>
+            </li>
+          </ul>
+          <!--Pizzas Per Second upgrades-->
+          <p class="menu">Passive income</p>
+          <ul>
+            <li>
+              <button id="worker">
+                Worker
+                <span id="workerCost">0</span>
+              </button>
+              <span id="workerAmount">0</span>
+            </li>
+            <li>
+              <button id="workSpeed">
+                Worker bonus
+                <span id="workSpeedCost">0</span>
+              </button>
+              <span id="workSpeedAmount"></span>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <!--middel-save-text-->
+    <p id="oneMinSaveText">Game saved</p>
+    <button id="resetButton" title="reset">↻</button>
+    <button class="howToPlayButton prettyButton" popovertarget="howToPlay">
+      ⓘ
+    </button>
+    <dialog id="howToPlay" popover>
+      <h1>How to play</h1>
+      <hr />
+      <div class="gameInfoSection">
+        <h2>How to get money:</h2>
+        <p>
+          You get money each time you left click on the pizza, and the amount
+          you receive is displayed beside your cursor. You can also see how much
+          you get per click/second, which is shown above the pizza.
+        </p>
       </div>
-    </section>
-  </main>
-  <!--middel-save-text-->
-  <p id="oneMinSaveText">Game saved</p>
-  <button id="resetButton" title="reset">↻</button>
-</body>
-
+      <div class="gameInfoSection">
+        <h2>How upgrades/workers work:</h2>
+        <p>
+          In the right side there is a menu displaying different toppings and at
+          the bottom worker/worker speed. The toppings gives you more money per
+          click, and the more expensive toppings gives you more money per click.
+          Each time you buy a upgrade it gets increasingly more expensive. Each
+          worker you buy clicks once a second for you, but you can increase
+          their speed by buying worker speed, which gives all workers the speed
+          increase.
+        </p>
+      </div>
+      <div class="gameInfoSection">
+        <h2>Boost Pizza:</h2>
+        <img src="images/booster.webp" />
+        <p>
+          If you are lucky a boost pizza will appear on your screen, which gives
+          you a 10x boost to both clicks & dollars pr. click. The boost only
+          lasts 10 seconds so take advantage of those few seconds to click away!
+          The boost appears within 10-100 seconds after a boost pizza.
+        </p>
+      </div>
+      <div class="gameInfoSection">
+        <h2>Good to know:</h2>
+        <p>
+          The game saves automatically every minute, which is announced when a
+          box pops up at the bottom of your screen. The game also saves each
+          time you buy an upgrade.
+        </p>
+      </div>
+    </dialog>
+  </body>
 </html>
