@@ -570,10 +570,21 @@ setInterval(() => {
 }, 60000);
 
 const reset = document.querySelector("#resetButton");
+const shutDown = new Audio("sounds/window.mp3");
+
+function playShutDown() {
+  shutDown.play();
+}
 
 reset.addEventListener("click", () => {
   if (confirm("Do you want to reset the game?")) {
     localStorage.removeItem(saveKey);
+    sessionStorage.setItem("resetShutDown", "true");
     location.reload();
   }
 });
+
+if (sessionStorage.getItem("resetShutDown") === "true") {
+  sessionStorage.removeItem("resetShutDown");
+  playShutDown();
+}
