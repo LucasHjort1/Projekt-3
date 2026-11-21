@@ -34,7 +34,7 @@ main {
 }
 
 .pizza {
-  width: 40%;
+  width: 24vw;
   padding: 0;
   border: none;
   background: none;
@@ -47,7 +47,7 @@ main {
 .pizza img {
   border-radius: 50%;
   display: block;
-  max-height: 40vh;
+  max-height: 100%;
   max-width: 100%;
   object-fit: contain;
 }
