@@ -218,6 +218,8 @@ const cpsCount = document.querySelector("#cpsCount");
 const boosterArea = document.querySelector(".left-side");
 const boosterSound = new Audio("sounds/boosterMusic.mp3");
 
+const clickSound = new Audio("sounds/clickSound.mp3");
+
 function spawnBooster() {
   const booster = document.createElement("img");
   booster.src = "images/booster.webp";
@@ -265,6 +267,8 @@ scheduleBooster();
 function addPoint(event) {
   dollars += clicks * boosterMultiplier;
   updateStats();
+  clickSound.currentTime = 0;
+  clickSound.play();
   showClickEffect(event);
 }
 
@@ -338,7 +342,7 @@ function addImage(int) {
     const pizzaButton = document.querySelector(".pizza");
     const img = document.createElement("img");
     img.style.maxWidth = "320px";
-    img.style.maxHeight = "320px%";
+    img.style.maxHeight = "320px";
     switch (int) {
       case 0:
         img.src = "images/02_tomatsovs.png";
@@ -469,8 +473,8 @@ function reAddImage(int, zIndex) {
   if (upgrades[int].amount != 0) {
     const pizzaButton = document.querySelector(".pizza");
     const img = document.createElement("img");
-    img.style.maxWidth = "350px";
-    img.style.maxHeight = "350px";
+    img.style.maxWidth = "320px";
+    img.style.maxHeight = "320px";
     switch (int) {
       case 0:
         img.src = "images/02_tomatsovs.png";
