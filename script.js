@@ -275,7 +275,8 @@ function addPoint(event) {
   dollars += clicks * boosterMultiplier;
   updateStats();
   clickSound.currentTime = 0;
-  clickSound.play();
+  playRandomClickSound(); /*NYE playsound mere creamy*/
+  /*clickSound.play();   Dette var den tidligere play sound*/
   showClickEffect(event);
 }
 
@@ -599,4 +600,22 @@ reset.addEventListener("click", () => {
 if (sessionStorage.getItem("resetShutDown") === "true") {
   sessionStorage.removeItem("resetShutDown");
   playShutDown();
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+const click1 = new Audio("sounds/clickSound/click1.mp3");
+const click2 = new Audio("sounds/clickSound/click2.mp3");
+const click3 = new Audio("sounds/clickSound/click3.mp3");
+const click4 = new Audio("sounds/clickSound/click4.mp3");
+const click5 = new Audio("sounds/clickSound/click5.mp3");
+const click6 = new Audio("sounds/clickSound/click6.mp3");
+const click7 = new Audio("sounds/clickSound/click7.mp3");
+
+function playRandomClickSound() {
+  click7.volume = 0.2;
+  click7.play();
+  click7.currentTime = 0;
 }
