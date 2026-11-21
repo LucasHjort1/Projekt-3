@@ -341,8 +341,8 @@ function addImage(int) {
   if (upgrades[int].amount != 0 && upgrades[int].amount <= 1) {
     const pizzaButton = document.querySelector(".pizza");
     const img = document.createElement("img");
-    img.style.maxWidth = "320px";
-    img.style.maxHeight = "320px";
+    img.style.maxWidth = "100%";
+    img.style.maxHeight = "100%";
     switch (int) {
       case 0:
         img.src = "images/02_tomatsovs.png";
@@ -473,8 +473,8 @@ function reAddImage(int, zIndex) {
   if (upgrades[int].amount != 0) {
     const pizzaButton = document.querySelector(".pizza");
     const img = document.createElement("img");
-    img.style.maxWidth = "320px";
-    img.style.maxHeight = "320px";
+    img.style.maxWidth = "100%";
+    img.style.maxHeight = "100%";
     switch (int) {
       case 0:
         img.src = "images/02_tomatsovs.png";
