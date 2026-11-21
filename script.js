@@ -146,6 +146,8 @@ function buyUpgrade(int) {
     updateCPS();
     updateCosts();
     saveGame();
+    upgradeSound.currentTime = 0;
+    upgradeSound.play();
   }
 }
 
@@ -165,6 +167,8 @@ function buyCPSUpgrade(int) {
     updateCPS();
     updateCosts();
     saveGame();
+    upgradeSound.currentTime = 0;
+    upgradeSound.play();
   }
 }
 
@@ -178,6 +182,8 @@ function buySpeedUpgrade(int) {
     updateCPS();
     updateCosts();
     saveGame();
+    upgradeSound.currentTime = 0;
+    upgradeSound.play();
   }
 }
 
@@ -219,6 +225,7 @@ const boosterArea = document.querySelector(".left-side");
 const boosterSound = new Audio("sounds/boosterMusic.mp3");
 
 const clickSound = new Audio("sounds/clickSound.mp3");
+const upgradeSound = new Audio("sounds/upgradeBuySound.mp3");
 
 function spawnBooster() {
   const booster = document.createElement("img");
