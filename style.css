@@ -308,6 +308,7 @@ main {
   padding: 24px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
   scrollbar-width: none; /*Gør det virker også på firefox*/
+  transition: all 0.35s ease;
 }
 
 #howToPlay::-webkit-scrollbar {
@@ -344,4 +345,17 @@ main {
   max-height: 6rem;
   margin-left: 10px;
   margin-bottom: 10px;
+}
+
+@starting-style {
+  #howToPlay:popover-open {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+}
+
+@media (min-width: 1000px) {
+  #howToPlay {
+    max-width: 40%;
+  }
 }
