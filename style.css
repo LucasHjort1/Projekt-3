@@ -4,6 +4,8 @@
   --font-family: "Arial", sans-serif;
   --Affordable-color: #3aa45a;
   --Expensive-color: #c04a3c;
+  --button-main: #8b0000;
+  --button-hover: #740000;
 }
 
 body {
@@ -269,19 +271,6 @@ main {
   bottom: 10px;
   left: 10px;
   z-index: 50;
-
-  background-color: darkred;
-  color: darkorange;
-  border: 2px solid var(--text-color);
-  border-radius: 10px;
-  box-shadow: 4px 4px var(--text-color);
-  width: 50px;
-  height: 50px;
-  font-size: 35px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center + 6px;
 }
 
 .howToPlayButton {
@@ -295,7 +284,7 @@ main {
 }
 
 .prettyButton {
-  background-color: darkred;
+  background-color: var(--button-main);
   color: #ff8c00;
   border: 2px solid var(--text-color);
   border-radius: 10px;
@@ -304,6 +293,10 @@ main {
   height: 50px;
   font-size: 35px;
   cursor: pointer;
+}
+
+.prettyButton:hover {
+  background-color: var(--button-hover);
 }
 
 #howToPlay {
