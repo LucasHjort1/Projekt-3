@@ -137,8 +137,8 @@ main {
   padding: 10px;
   font-size: 1.8vw;
   width: 67%;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
+  border-top-left-radius: 18px;
+  border-bottom-left-radius: 18px;
   text-wrap: nowrap;
   min-width: fit-content;
   cursor: pointer;
