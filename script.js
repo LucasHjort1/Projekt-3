@@ -481,7 +481,6 @@ function saveGame() {
 
   const saveText = JSON.stringify(save);
   localStorage.setItem(saveKey, saveText);
-  saveGameSound.play();
 }
 
 function reAddImage(int, zIndex) {
@@ -582,6 +581,7 @@ function showSaveMessage() {
 setInterval(() => {
   saveGame();
   showSaveMessage();
+  saveGameSound.play();
 }, 60000);
 
 const reset = document.querySelector("#resetButton");
@@ -594,6 +594,7 @@ function playShutDown() {
 save.addEventListener("click", () => {
   saveGame();
   showSaveMessage();
+  saveGameSound.play();
 });
 
 reset.addEventListener("click", () => {
