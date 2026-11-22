@@ -147,6 +147,7 @@ function buyUpgrade(int) {
     updateCosts();
     saveGame();
     upgradeSound.currentTime = 0;
+    upgradeSound.volume = 0.3;
     upgradeSound.play();
   }
 }
@@ -168,6 +169,7 @@ function buyCPSUpgrade(int) {
     updateCosts();
     saveGame();
     upgradeSound.currentTime = 0;
+    upgradeSound.volume = 0.3;
     upgradeSound.play();
   }
 }
@@ -183,6 +185,7 @@ function buySpeedUpgrade(int) {
     updateCosts();
     saveGame();
     upgradeSound.currentTime = 0;
+    upgradeSound.volume = 0.3;
     upgradeSound.play();
   }
 }
