@@ -6,6 +6,7 @@
   --Expensive-color: #c04a3c;
   --button-main: #8b0000;
   --button-hover: #740000;
+  --button-icon: #ff8c00;
 }
 
 body {
@@ -285,7 +286,7 @@ main {
 
 .prettyButton {
   background-color: var(--button-main);
-  color: #ff8c00;
+  color: var(--button-icon);
   border: 2px solid var(--text-color);
   border-radius: 10px;
   box-shadow: 4px 4px var(--text-color);
@@ -370,6 +371,21 @@ main {
 }
 
 #saveButton img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#muteButton {
+  position: fixed;
+  bottom: 10px;
+  left: 190px;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#muteButton img {
   max-width: 100%;
   max-height: 100%;
 }

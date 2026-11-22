@@ -4,6 +4,33 @@ let cps = 0;
 let imgHeight = 3;
 let boosterMultiplier = 1;
 
+const click1 = new Audio("sounds/clickSound/click1.mp3");
+const click2 = new Audio("sounds/clickSound/click2.mp3");
+const click3 = new Audio("sounds/clickSound/click3.mp3");
+const click4 = new Audio("sounds/clickSound/click4.mp3");
+const click5 = new Audio("sounds/clickSound/click5.mp3");
+const click6 = new Audio("sounds/clickSound/click6.mp3");
+const click7 = new Audio("sounds/clickSound/click7.mp3");
+const boosterSound = new Audio("sounds/boosterMusic.mp3");
+const saveGameSound = new Audio("sounds/saveGameSound.mp3");
+
+const clickSound = new Audio("sounds/clickSound.mp3");
+const upgradeSound = new Audio(
+  "sounds/upgradeSoundv2.mp3",
+); /*Ændrede  lyd fra upgradeBuySound*/
+const shutDown = new Audio("sounds/window.mp3");
+
+const audioElements = [];
+
+audioElements.push(
+  boosterSound,
+  saveGameSound,
+  clickSound,
+  upgradeSound,
+  shutDown,
+  click7,
+);
+
 const upgrades = [
   {
     name: "Pizza sauce",
@@ -225,13 +252,6 @@ const clickCount = document.querySelector("#clickCount");
 const cpsCount = document.querySelector("#cpsCount");
 
 const boosterArea = document.querySelector(".left-side");
-const boosterSound = new Audio("sounds/boosterMusic.mp3");
-const saveGameSound = new Audio("sounds/saveGameSound.mp3");
-
-const clickSound = new Audio("sounds/clickSound.mp3");
-const upgradeSound = new Audio(
-  "sounds/upgradeSoundv2.mp3",
-); /*Ændrede  lyd fra upgradeBuySound*/
 
 function spawnBooster() {
   const booster = document.createElement("img");
@@ -477,6 +497,7 @@ function saveGame() {
     clicks: clicks,
     upgrades: savedUpgrades,
     images: savedUpgradeImg,
+    audioSetting: isMuted(),
   };
 
   const saveText = JSON.stringify(save);
@@ -547,6 +568,10 @@ function loadGame() {
   dollars = save.dollars;
   clicks = save.clicks;
 
+  if (save.audioSetting === true) {
+    setMuted(true);
+  }
+
   upgrades.forEach((upgrade, i) => {
     upgrade.amount = save.upgrades[i].amount;
     upgrade.cost = save.upgrades[i].cost;
@@ -562,6 +587,26 @@ function loadGame() {
   updateStats();
   updateCPS();
 }
+
+const muteButton = document.querySelector("#muteButton");
+const muteIcon = muteButton.querySelector("img");
+
+function isMuted() {
+  return audioElements.every((media) => media.muted);
+}
+
+function setMuted(muted) {
+  audioElements.forEach((media) => {
+    media.muted = muted;
+  });
+  muteIcon.src = muted
+    ? "images/mutedVolumeOrange.png"
+    : "images/unmutedVolumeOrange.png";
+}
+
+muteButton.addEventListener("click", () => {
+  setMuted(!isMuted());
+});
 
 loadGame();
 updateCosts();
@@ -586,7 +631,6 @@ setInterval(() => {
 
 const reset = document.querySelector("#resetButton");
 const save = document.querySelector("#saveButton");
-const shutDown = new Audio("sounds/window.mp3");
 
 function playShutDown() {
   shutDown.play();
@@ -613,14 +657,6 @@ if (sessionStorage.getItem("resetShutDown") === "true") {
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
-
-const click1 = new Audio("sounds/clickSound/click1.mp3");
-const click2 = new Audio("sounds/clickSound/click2.mp3");
-const click3 = new Audio("sounds/clickSound/click3.mp3");
-const click4 = new Audio("sounds/clickSound/click4.mp3");
-const click5 = new Audio("sounds/clickSound/click5.mp3");
-const click6 = new Audio("sounds/clickSound/click6.mp3");
-const click7 = new Audio("sounds/clickSound/click7.mp3");
 
 function playRandomClickSound() {
   click7.volume = 0.2;
