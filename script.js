@@ -228,7 +228,9 @@ const boosterArea = document.querySelector(".left-side");
 const boosterSound = new Audio("sounds/boosterMusic.mp3");
 
 const clickSound = new Audio("sounds/clickSound.mp3");
-const upgradeSound = new Audio("sounds/upgradeBuySound.mp3");
+const upgradeSound = new Audio(
+  "sounds/upgradeSoundv2.mp3",
+); /*Ændrede  lyd fra upgradeBuySound*/
 
 function spawnBooster() {
   const booster = document.createElement("img");
