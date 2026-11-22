@@ -226,6 +226,7 @@ const cpsCount = document.querySelector("#cpsCount");
 
 const boosterArea = document.querySelector(".left-side");
 const boosterSound = new Audio("sounds/boosterMusic.mp3");
+const saveGameSound = new Audio("sounds/saveGameSound.mp3");
 
 const clickSound = new Audio("sounds/clickSound.mp3");
 const upgradeSound = new Audio(
@@ -480,6 +481,7 @@ function saveGame() {
 
   const saveText = JSON.stringify(save);
   localStorage.setItem(saveKey, saveText);
+  saveGameSound.play();
 }
 
 function reAddImage(int, zIndex) {
