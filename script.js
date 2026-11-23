@@ -268,6 +268,7 @@ function spawnBooster() {
     boosterSound.play();
     boosterMultiplier = 10;
     booster.remove();
+    scheduleBooster.currentTime = 0;
     document.querySelector(".left-side").style.backgroundImage =
       "url('images/boosterimg.png')";
 
@@ -284,7 +285,7 @@ function spawnBooster() {
 
   setTimeout(() => {
     booster.remove();
-  }, 15000); // forsvinder efter 15 sekunder
+  }, 10000); // forsvinder efter 10 sekunder
 }
 
 function scheduleBooster() {
