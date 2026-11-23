@@ -310,7 +310,12 @@ function addPoint(event) {
 function showClickEffect(event) {
   const clickEffect = document.createElement("span");
   clickEffect.classList.add("click-effect");
-  clickEffect.textContent = "+" + clicks * boosterMultiplier + "$";
+  clickEffect.textContent =
+    "+" +
+    (clicks * boosterMultiplier).toLocaleString("en-US", {
+      maximumFractionDigits: 0,
+    });
+  +"$";
 
   clickEffect.style.left = event.offsetX + "px";
   clickEffect.style.top = event.offsetY + "px";
