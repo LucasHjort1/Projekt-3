@@ -270,7 +270,7 @@ function spawnBooster() {
     booster.remove();
     scheduleBooster.currentTime = 0;
     document.querySelector(".left-side").style.backgroundImage =
-      "url('images/boosterImgKomprimeret.png')";
+      "url('images/boosterImgKomprimeret.webp')";
 
     setTimeout(() => {
       boosterMultiplier = 1;
